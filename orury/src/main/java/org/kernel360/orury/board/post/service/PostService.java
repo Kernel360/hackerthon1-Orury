@@ -4,30 +4,38 @@ import lombok.RequiredArgsConstructor;
 import org.kernel360.orury.board.comment.domain.Comment;
 import org.kernel360.orury.board.comment.repository.CommentRepository;
 import org.kernel360.orury.board.post.domain.Post;
+import org.kernel360.orury.board.post.dto.PostDto;
 import org.kernel360.orury.board.post.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Transactional
+
 @RequiredArgsConstructor
 @Service
 public class PostService {
-    @Autowired
     private final PostRepository postRepository;
-
-    @Autowired
     private final CommentRepository commentRepository;
 
-    public Post getPostById(Long postId) {
+    @Transactional(readOnly = true)
+    public PostDto getPost(Integer postId) {
         // postId를 이용하여 게시글 조회
-        return postRepository.findById(Math.toIntExact(postId)).orElse(null);
+        return PostDto.from(
+                postRepository.findById(postId)
+                        .orElseThrow(() -> new UsernameNotFoundException("조회된 게시글이 없습니다.")));
     }
 
-    public List<Comment> getCommentsByPostId(Long postId) {
-        // postId를 이용하여 댓글리스트 조회
-        return commentRepository.findByPostId(postId);
+    @Transactional(readOnly = true)
+    public List<PostDto> getPostAll() {
+        // 게시판 조회
+        return postRepository.findAll().stream().map(PostDto::from).collect(Collectors.toList());
+    }
+
+    public void savePost(PostDto dto) {
+        postRepository.save(PostDto.toEntity(dto));
     }
 }
