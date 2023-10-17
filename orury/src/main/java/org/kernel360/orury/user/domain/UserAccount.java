@@ -10,6 +10,7 @@ import org.kernel360.orury.global.domain.BaseEntity;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -92,7 +93,8 @@ public class UserAccount extends BaseEntity {
             Set<PostLike> postLikes,
             Set<CommentLike> commentLikes
     ) {
-        return new UserAccount(userId,
+        return new UserAccount(
+                userId,
                 password,
                 nickname,
                 sex,
