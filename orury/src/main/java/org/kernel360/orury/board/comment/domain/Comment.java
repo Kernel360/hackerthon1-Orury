@@ -1,8 +1,6 @@
 package org.kernel360.orury.board.comment.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.kernel360.orury.board.post.domain.Post;
 import org.kernel360.orury.global.domain.BaseEntity;
 import org.kernel360.orury.user.domain.UserAccount;
@@ -15,6 +13,7 @@ import javax.persistence.*;
 @Setter
 @EntityListeners(AuditingEntityListener.class)
 @Entity
+@NoArgsConstructor
 public class Comment extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +27,16 @@ public class Comment extends BaseEntity {
     private Integer parentId;
     private Integer childId;
     private boolean isDeleted;
+
+    @Builder
+    public Comment(Integer id, UserAccount userAccount, Post post, String content, int likeCnt, Integer parentId, Integer childId, boolean isDeleted) {
+        this.id = id;
+        this.userAccount = userAccount;
+        this.post = post;
+        this.content = content;
+        this.likeCnt = likeCnt;
+        this.parentId = parentId;
+        this.childId = childId;
+        this.isDeleted = isDeleted;
+    }
 }
