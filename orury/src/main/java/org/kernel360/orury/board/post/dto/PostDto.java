@@ -1,16 +1,13 @@
 package org.kernel360.orury.board.post.dto;
 
 import org.kernel360.orury.board.comment.domain.Comment;
-import org.kernel360.orury.board.comment.dto.CommentDto;
 import org.kernel360.orury.board.post.domain.Post;
 import org.kernel360.orury.user.dto.UserAccountDto;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * DTO for {@link org.kernel360.orury.board.post.domain.Post}
