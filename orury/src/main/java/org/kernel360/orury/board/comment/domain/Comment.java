@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Comment extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @ManyToOne
     private UserAccount userAccount;
     @ManyToOne
@@ -29,7 +29,7 @@ public class Comment extends BaseEntity {
     private boolean isDeleted;
 
     @Builder
-    public Comment(Integer id, UserAccount userAccount, Post post, String content, int likeCnt, Integer parentId, Integer childId, boolean isDeleted) {
+    public Comment(Long id, UserAccount userAccount, Post post, String content, int likeCnt, Integer parentId, Integer childId, boolean isDeleted) {
         this.id = id;
         this.userAccount = userAccount;
         this.post = post;
