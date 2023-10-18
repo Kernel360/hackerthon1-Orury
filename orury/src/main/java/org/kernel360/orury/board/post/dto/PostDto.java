@@ -1,12 +1,9 @@
 package org.kernel360.orury.board.post.dto;
 
-import org.kernel360.orury.board.comment.dto.CommentDto;
 import org.kernel360.orury.board.post.domain.Post;
 import org.kernel360.orury.user.dto.UserAccountDto;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * DTO for {@link org.kernel360.orury.board.post.domain.Post}
@@ -95,16 +92,16 @@ public record PostDto(
         );
     }
 
-    public static Post toEntity(PostDto dto) {
-        return Post.of(
-                dto.id(),
-                UserAccountDto.toEntity(dto.userAccount()),
-                dto.title(),
-                dto.content(),
-                dto.viewCnt(),
-                dto.likeCnt(),
-//                dto.comments().stream().map(CommentDto::),
-                dto.isDeleted()
-        );
-    }
+//    public static Post toEntity(PostDto dto) {
+//        return Post.of(
+//                dto.id(),
+//                UserAccountDto.toEntity(dto.userAccount()),
+//                dto.title(),
+//                dto.content(),
+//                dto.viewCnt(),
+//                dto.likeCnt(),
+////                dto.comments().stream().map(CommentDto::),
+//                dto.isDeleted()
+//        );
+//    }
 }

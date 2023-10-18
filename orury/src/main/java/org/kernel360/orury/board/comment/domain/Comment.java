@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class Comment extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @ManyToOne
     private UserAccount userAccount;
     @ManyToOne
