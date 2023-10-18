@@ -1,9 +1,9 @@
 package org.kernel360.orury.board.post.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.kernel360.orury.board.comment.domain.Comment;
 import org.kernel360.orury.board.post.domain.Post;
 import org.kernel360.orury.board.post.service.PostService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -13,17 +13,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Controller
 public class PostController {
-
     private final PostService postService;
 
-    public PostController(PostService postService) {
-        this.postService = postService;
-    }
-
     @GetMapping("/post/{postId}")
-    public String showPostDetail(@PathVariable Long postId, Model model) {
+    public String showPostDetail(@PathVariable Integer postId, Model model) {
         // postId를 이용하여 게시글 상세 정보 조회
         Post post = postService.getPostById(postId);
 
