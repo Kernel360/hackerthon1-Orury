@@ -1,12 +1,16 @@
 package org.kernel360.orury.board.post.dto;
 
+import org.kernel360.orury.board.comment.domain.Comment;
 import org.kernel360.orury.board.comment.dto.CommentDto;
 import org.kernel360.orury.board.post.domain.Post;
 import org.kernel360.orury.user.dto.UserAccountDto;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * DTO for {@link org.kernel360.orury.board.post.domain.Post}
@@ -19,7 +23,7 @@ public record PostDto(
         int likeCnt,
         boolean isDeleted,
         UserAccountDto userAccount,
-//        List<CommentDto> comments,
+        List<Comment> comments,
         LocalDateTime createdAt,
         String createdBy,
         String updatedBy,
@@ -35,17 +39,12 @@ public record PostDto(
             boolean isDeleted
     ) {
         return PostDto.of(
-                null,
                 title,
                 content,
+                userAccount,
                 viewCnt,
                 likeCnt,
-                isDeleted,
-                userAccount,
-                null,
-                null,
-                null,
-                null
+                isDeleted
         );
     }
 
@@ -57,7 +56,7 @@ public record PostDto(
             int likeCnt,
             boolean isDeleted,
             UserAccountDto userAccount,
-//            List<CommentDto> comments,
+            List<Comment> comments,
             LocalDateTime createdAt,
             String createdBy,
             String updatedBy,
@@ -71,7 +70,7 @@ public record PostDto(
                 likeCnt,
                 isDeleted,
                 userAccount,
-//                comments,
+                comments,
                 createdAt,
                 createdBy,
                 updatedBy,
@@ -88,6 +87,7 @@ public record PostDto(
                 entity.getLikeCnt(),
                 entity.isDeleted(),
                 UserAccountDto.from(entity.getUserAccount()),
+                new ArrayList<>(entity.getComments()),
                 entity.getCreatedAt(),
                 entity.getCreatedBy(),
                 entity.getUpdatedBy(),
@@ -103,7 +103,7 @@ public record PostDto(
                 dto.content(),
                 dto.viewCnt(),
                 dto.likeCnt(),
-//                dto.comments().stream().map(CommentDto::),
+                new HashSet<>(dto.comments),
                 dto.isDeleted()
         );
     }
