@@ -1,7 +1,5 @@
 package org.kernel360.orury.global.security;
 
-import org.assertj.core.internal.bytebuddy.dynamic.DynamicType;
-import org.kernel360.orury.user.domain.User;
 import org.kernel360.orury.user.dto.UserDto;
 import org.kernel360.orury.user.service.UserService;
 import org.springframework.boot.test.mock.mockito.MockBean;
