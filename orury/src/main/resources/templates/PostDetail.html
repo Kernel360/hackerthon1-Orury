@@ -37,12 +37,12 @@
 <h4>댓글 목록</h4>
 <div th:if="${comments}">
     <div th:each="comment : ${comments}">
-        <p>댓글 작성자: <span th:text="${comment.userAccount.name}">댓글 작성자</span></p>
+        <p>댓글 작성자: <span th:text="${comment.userAccount.nickname}">댓글 작성자</span></p>
         <p th:utext="${comment.content}">댓글 텍스트</p>
-        <p>댓글 작성 시간: <span th:text="${comment.createdDate}">댓글 작성 시간</span></p>
-        <p>댓글 좋아요 수: <span th:text="${comment.likesCnt}">댓글 좋아요 수</span></p>
+        <p>댓글 작성 시간: <span th:text="${comment.createdAt}">댓글 작성 시간</span></p>
+        <p>댓글 좋아요 수: <span th:text="${comment.likeCnt}">댓글 좋아요 수</span></p>
         <!-- 댓글 수정 및 삭제 버튼 (작성자인 경우에만 표시) -->
-        <div th:if="${currentUserIsCommentAuthor}">
+        <div th:if="${currentUserIsAuthor}">
             <a href="/editComment">댓글 수정</a>
             <a href="/deleteComment">댓글 삭제</a>
         </div>

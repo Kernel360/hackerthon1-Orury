@@ -38,4 +38,12 @@ public class PostService {
     public void savePost(PostDto dto) {
         postRepository.save(PostDto.toEntity(dto));
     }
+
+    public Post getPostById(Integer postId) {
+        return postRepository.getPostById(postId);
+    }
+
+    public List<Comment> getCommentsByPostId(Integer postId) {
+        return commentRepository.findCommentsByPostId(postId);
+    }
 }
