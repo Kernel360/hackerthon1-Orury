@@ -2,17 +2,12 @@ package org.kernel360.orury.global.security;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.kernel360.orury.user.dto.UserAccountDto;
+import org.kernel360.orury.user.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -31,8 +26,8 @@ public record Principal(
                 .collect(Collectors.toSet()));
     }
 
-    public static Principal from(UserAccountDto dto) {
-        return Principal.of(dto.userId(), dto.email(), dto.password());
+    public static Principal from(User dto) {
+        return Principal.of(String.valueOf(dto.getId()), dto.getEmail(), dto.getPassword());
     }
 
 //    @Override
@@ -81,10 +76,10 @@ public record Principal(
         return true;
     }
 
+    @Getter
     public enum RoleType {
         USER("ROLE_USER");
 
-        @Getter
         private final String name;
 
         RoleType(String name) {

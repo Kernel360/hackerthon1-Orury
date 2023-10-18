@@ -1,7 +1,7 @@
 package org.kernel360.orury.global.security;
 
 import lombok.extern.slf4j.Slf4j;
-import org.kernel360.orury.user.service.UserAccountService;
+import org.kernel360.orury.user.service.UserService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,9 +39,9 @@ public class SecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService(UserAccountService service) {
-        return username -> service
-                .searchUser(username)
+    public UserDetailsService userDetailsService(UserService userService) {
+        return id -> userService
+                .searchUser(Long.parseLong(id))
                 .map(Principal::from)
                 .orElseThrow(() -> new UsernameNotFoundException("유저 정보가 없습니다."));
     }
