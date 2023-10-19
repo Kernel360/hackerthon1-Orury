@@ -27,7 +27,7 @@ public class CommentController {
     public void updateComment(Integer commentId, String content) {
         Comment comment = commentService.searchCommentById(commentId);
 
-        comment.setContent(content);
+        comment.setCommentContent(content);
         commentService.saveComment(comment);
     }
 }

@@ -22,7 +22,7 @@ public record PostDto(
         int viewCnt,
         int likeCnt,
         isDeletedType isDeleted,
-        UserDto userAccount,
+        UserDto user,
         List<Comment> comments,
         LocalDateTime createdAt,
         String createdBy,
@@ -33,7 +33,7 @@ public record PostDto(
     public static PostDto of(
             String title,
             String content,
-            UserDto userAccount,
+            UserDto user,
             int viewCnt,
             int likeCnt,
             boolean isDeleted
@@ -41,7 +41,7 @@ public record PostDto(
         return PostDto.of(
                 title,
                 content,
-                userAccount,
+                user,
                 viewCnt,
                 likeCnt,
                 isDeleted
@@ -55,7 +55,7 @@ public record PostDto(
             int viewCnt,
             int likeCnt,
             isDeletedType isDeleted,
-            UserDto userAccount,
+            UserDto user,
             List<Comment> comments,
             LocalDateTime createdAt,
             String createdBy,
@@ -69,7 +69,7 @@ public record PostDto(
                 .viewCnt(viewCnt)
                 .likeCnt(likeCnt)
                 .isDeleted(isDeleted)
-                .userAccount(userAccount)
+                .user(user)
                 .comments(comments)
                 .createdAt(createdAt)
                 .createdBy(createdBy)
@@ -86,7 +86,7 @@ public record PostDto(
                 .viewCnt(entity.getViewCnt())
                 .likeCnt(entity.getLikeCnt())
                 .isDeleted(entity.getIsDeleted())
-                .userAccount(UserDto.from(entity.getUser()))
+                .user(UserDto.from(entity.getUser()))
                 .comments(new ArrayList<>(entity.getComments()))
                 .createdAt(entity.getCreatedAt())
                 .createdBy(entity.getCreatedBy())
@@ -103,7 +103,7 @@ public record PostDto(
                 .viewCnt(dto.viewCnt)
                 .likeCnt(dto.likeCnt)
                 .isDeleted(dto.isDeleted)
-                .user(dto.userAccount.toEntity())
+                .user(dto.user.toEntity())
                 .comments(new HashSet<>(dto.comments))
                 .build();
     }
