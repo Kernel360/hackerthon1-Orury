@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.kernel360.orury.global.domain.BaseEntity;
-import org.kernel360.orury.user.domain.User;
+import org.kernel360.orury.user.domain.UserAccount;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -19,7 +19,7 @@ public class CommentLike extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
-    private User user;
+    private UserAccount userAccount;
     private boolean isLike;
 }
 

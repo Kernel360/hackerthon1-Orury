@@ -4,8 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.kernel360.orury.board.comment.domain.Comment;
 import org.kernel360.orury.board.post.domain.Post;
-import org.kernel360.orury.global.util.isDeletedType;
-import org.kernel360.orury.user.domain.User;
+import org.kernel360.orury.user.domain.UserAccount;
 
 import java.time.LocalDateTime;
 
@@ -21,13 +20,15 @@ public class CommentDto{
 
     private Post post;
 
-    private User user;
+    private UserAccount userAccount;
 
     private int likeCnt;
 
-    private Long parentId;
+    private Integer parentId;
 
-    private isDeletedType isDeleted;
+    private Integer childId;
+
+    private boolean isDeleted;
 
     private LocalDateTime createdAt;
 
@@ -40,9 +41,10 @@ public class CommentDto{
     public Comment toEntity() {
             return Comment.builder()
                     .id(id)
-                    .commentContent(content)
+                    .content(content)
                     .likeCnt(likeCnt)
                     .parentId(parentId)
+                    .childId(childId)
                     .isDeleted(isDeleted)
                     .build();
     }
