@@ -21,7 +21,7 @@
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
     <title>마이페이지</title>
-    <link rel="stylesheet" type="text/css" href="my_style.css">
+    <link rel="stylesheet" type="text/css" href="../../static/my_style.css">
 </head>
 
 <body>
@@ -30,7 +30,7 @@
             <h1>마이 페이지</h1>
         </div>
         <div>
-            <form th:action="@{/user}"  th:object="${UserDto}" method="post" >
+            <form th:action="@{/templates/user}" th:object="${UserDto}" method="post" >
                 <table class="table">
                     <tbody>
                         <tr>
