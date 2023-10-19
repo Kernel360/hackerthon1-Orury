@@ -73,7 +73,7 @@ public class PostController {
         String currentUsername = authentication.getName();
 
         // 현재 사용자와 게시글 작성자 비교
-        boolean currentUserIsAuthor = currentUsername.equals(post.getUserAccount().getCreatedBy());
+        boolean currentUserIsAuthor = currentUsername.equals(post.getUser().getCreatedBy());
 
         // 댓글 목록 조회
         List<Comment> comments = postService.getCommentsByPostId(postId);
