@@ -1,4 +1,4 @@
-package org.kernel360.orury.board.post.util;
+package org.kernel360.orury.global.util;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
