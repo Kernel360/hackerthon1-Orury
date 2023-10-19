@@ -3,6 +3,7 @@ package org.kernel360.orury.board.comment.domain;
 import lombok.*;
 import org.kernel360.orury.board.post.domain.Post;
 import org.kernel360.orury.global.domain.BaseEntity;
+import org.kernel360.orury.global.util.isDeletedConverter;
 import org.kernel360.orury.global.util.isDeletedType;
 import org.kernel360.orury.user.domain.User;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -35,6 +36,7 @@ public class Comment extends BaseEntity {
     @Column(name = "P_ID")
     private Long parentId;
 
+    @Convert(converter = isDeletedConverter.class)
     @Column(name = "IS_DELETE")
     private isDeletedType isDeleted;
 
