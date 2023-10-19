@@ -9,7 +9,6 @@ import org.kernel360.orury.board.post.domain.Post;
 import org.kernel360.orury.board.post.domain.PostLike;
 import org.kernel360.orury.user.domain.User;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
@@ -52,5 +51,19 @@ public class UserDto{
                       .postLikes(postLikes)
                       .commentLikes(commentLikes)
                       .build();
+        }
+
+        public static UserDto from(User entity) {
+                return UserDto.builder()
+                        .id(entity.getId())
+                        .nickname(entity.getNickname())
+                        .sex(entity.getSex())
+                        .birth(entity.getBirthday())
+                        .email(entity.getEmail())
+                        .password(entity.getPassword())
+                        .comments(entity.getComments())
+                        .postLikes(entity.getPostLikes())
+                        .commentLikes(entity.getCommentLikes())
+                        .build();
         }
 }
