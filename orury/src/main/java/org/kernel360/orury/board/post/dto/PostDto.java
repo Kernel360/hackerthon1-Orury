@@ -3,14 +3,13 @@ package org.kernel360.orury.board.post.dto;
 import lombok.Builder;
 import org.kernel360.orury.board.comment.domain.Comment;
 import org.kernel360.orury.board.post.domain.Post;
-import org.kernel360.orury.board.post.util.isDeletedType;
+import org.kernel360.orury.global.util.isDeletedType;
 import org.kernel360.orury.user.dto.UserDto;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * DTO for {@link org.kernel360.orury.board.post.domain.Post}
