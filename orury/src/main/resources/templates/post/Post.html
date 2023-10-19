@@ -20,47 +20,30 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
             crossorigin="anonymous"></script>
-    <title>마이페이지</title>
+    <title>로그인</title>
     <link rel="stylesheet" type="text/css" href="my_style.css">
 </head>
 
 <body>
-<div class="whole_body_2">
+<div class="whole_body">
     <div class="my_style">
-        <h1>마이 페이지</h1>
+        <h1>로그인 페이지</h1>
+        <h5>아이디, 비밀번호를 입력해주세요</h5>
     </div>
     <div>
-        <form th:action="@{/user}"  th:object="${UserDto}" method="post" >
+        <form th:action="@{/login}"  th:object="${UserDto}" method="post" >
             <table class="table">
                 <tbody>
                 <tr>
-                    <td>ID :</td>
-                    <td th: text="${userId}">userId</td>
+                    <td>아이디</td>
+                    <td><input type="text" th:field="*{userId}"></td>
                 </tr>
                 <tr>
-                    <td>닉네임 :</td>
-                    <td th: text="${nickname}">nickname</td>
-                    <td><input type="text" th:field="*{nickname}"></td>
-                </tr>
-                <tr>
-                    <td>성별 :</td>
-                    <td th: text="${sex}">gender</td>
-                </tr>
-                <tr>
-                    <td>생년월일 :</td>
-                    <td th: text="${birth}">birth</td>
-                </tr>
-                <tr>
-                    <td>이메일 :</td>
-                    <td th: text="${email}">email</td>
-                    <td><input type="text" th:field="*{email}"></td>
-                </tr>
-                <tr>
-                    <td>비밀번호 :</td>
+                    <td>비밀번호</td>
                     <td><input type="text" th:field="*{password}"></td>
                 </tr>
                 </tbody>
-                <button type="submit">개인정보 수정</button>
+                <button type="submit">로그인</button>
             </table>
         </form>
     </div>
