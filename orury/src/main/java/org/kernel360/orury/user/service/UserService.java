@@ -34,6 +34,10 @@ public class UserService {
         return userRepository.save(userDto.toEntity());
     }
 
+    public User saveUser(UserDto userDto) {
+        return userRepository.save(userDto.toEntity());
+    }
+
     //유저 삭제
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
