@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <div class="whole_body">
+    <div class="whole_body_2">
         <div class="my_style">
             <h1>마이 페이지</h1>
         </div>
@@ -36,7 +36,6 @@
                         <tr>
                             <td>ID :</td>
                             <td th: text="${userId}">userId</td>
-                            <td><input type="text" th:field="*{userId}"></td>
                         </tr>
                         <tr>
                             <td>닉네임 :</td>
@@ -45,13 +44,11 @@
                         </tr>
                         <tr>
                             <td>성별 :</td>
-                            <td th: text="${sex}">sex</td>
-                            <td><input type="text" th:field="*{sex}"></td>
+                            <td th: text="${sex}">gender</td>
                         </tr>
                         <tr>
                             <td>생년월일 :</td>
                             <td th: text="${birth}">birth</td>
-                            <td><input type="text" th:field="*{birth}"></td>
                         </tr>
                         <tr>
                             <td>이메일 :</td>

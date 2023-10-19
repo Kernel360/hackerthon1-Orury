@@ -57,71 +57,67 @@
             <p class="lead">클라이밍의 모든 것!</p>
             <hr class="my-4">
             <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">게시글 작성</a>
-                <a class="btn btn-primary btn-lg" href="#" role="button">개인 정보</a>
-                <a class="btn btn-primary btn-lg" href="#" role="button">검색</a>
+                <a class="btn btn-primary btn-lg" href="@{/PostDetail}" role="button">게시글 작성</a>
+                <a class="btn btn-primary btn-lg" href="@{/Mypage}" role="button">개인 정보</a>
             </p>
         </div>
         <div class="card-columns">
-            <div class="card">
+            <form th:action="@{/user}"  th:object="${UserDto}" method="post" >
+                <div class="card">
+                    <img class="card-img-top"
+                         src="https://src.hidoc.co.kr/image/lib/2020/5/18/1589776145693_0.jpg"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <a class="card-title" th:href="@{/post/{postId}}" >"클라이밍 장비 선택 가이드: 초보자를 위한 에센셜 리스트"</a>
+                        <p class="card-text comment">클라이밍을 시작하려는 초보자를 위한 필수 장비와 그것들을 어떻게 선택하는지에 대한 조언을 포함한 글입니다.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top"
+                         src="https://www.womansense.co.kr/upload/woman/article/202112/thumb/49754-474495-sampleM.jpg"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <a th:href="@{/post/{postId}}" class="card-title"  >"클라이밍 초보자를 위한 10가지 필수 팁"</a>
+                        <p class="card-text comment">이 글에서는 클라이밍을 처음 시작하는 사람들을 대상으로, 안전과 즐거움을 위한 중요한 조언을 제공합니다.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top"
+                         src="data:image/jpeg;base64,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"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <a class="card-title" th:href="@{/post/{postId}}" >"세계에서 가장 아름다운 클라이밍 명소: 유명한 암벽 투어"</a>
+                        <p class="card-text comment">세계 각지의 아름다운 클라이밍 장소를 소개하고, 그곳에서의 독특한 경험을 공유합니다.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top"
+                         src="https://kaf.or.kr/data/editor/2306/thumb-e249381e80f2385f0c56583d1e153029_1686272443_2102_890x593.jpg"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <a class="card-title" th:href="@{/post/{postId}}" >"클라이밍 중 발생하는 가장 흔한 부상과 예방법"</a>
+                        <p class="card-text comment">클라이머들이 겪을 수 있는 부상과 그것을 피하는 방법을 다루며, 안전한 클라이밍을 위한 조언을 제시합니다.</p>
+                    </div>
+                </div><div class="card">
                 <img class="card-img-top"
-                    src="https://src.hidoc.co.kr/image/lib/2020/5/18/1589776145693_0.jpg"
-                    alt="Card image cap">
+                     src="https://health.chosun.com/site/data/img_dir/2023/06/13/2023061302704_0.jpg"
+                     alt="Card image cap">
                 <div class="card-body">
-                    <a href="http://naver.com" class="card-title">오늘도 클라이밍 한 번</a>
-                    <p class="card-text"></p>
-                    <p class="card-text comment"></p>
+                    <a class="card-title" th:href="@{/post/{postId}}" >"내 첫 번째 멀티피치 클라이밍 경험: 성공과 어려움"</a>
+                    <p class="card-text comment">첫 번째 멀티피치 클라이밍 여행의 경험을 공유하고, 어떻게 성공과 어려움을 극복했는지에 대해 이야기합니다.</p>
                 </div>
             </div>
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://www.womansense.co.kr/upload/woman/article/202112/thumb/49754-474495-sampleM.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <a href="http://naver.com" class="card-title"></a>
-                    <p class="card-text"></p>
-                    <p class="card-text comment"></p>
+                <div class="card">
+                    <img class="card-img-top"
+                         src="https://uyjoqvxyzgvv9714092.cdn.ntruss.com/data2/content/image/2011/10/27/.cache/512/20111027105709.jpg"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <a class="card-title" th:href="@{/post/{postId}}" >"클라이밍과 명상: 신체와 마음을 강화하는 조화"</a>
+                        <p class="card-text comment">클라이밍과 명상의 연결점을 탐구하며, 클라이밍이 정신적인 안정과 신체적인 건강을 높이는 방법을 설명합니다.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://src.hidoc.co.kr/image/lib/2020/5/18/1589776145693_0.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <a href="http://naver.com" class="card-title">오늘도 클라이밍 한 번</a>
-                    <p class="card-text"></p>
-                    <p class="card-text comment"></p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://www.womansense.co.kr/upload/woman/article/202112/thumb/49754-474495-sampleM.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <a href="http://naver.com" class="card-title"></a>
-                    <p class="card-text"></p>
-                    <p class="card-text comment"></p>
-                </div>
-            </div><div class="card">
-                <img class="card-img-top"
-                    src="https://src.hidoc.co.kr/image/lib/2020/5/18/1589776145693_0.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <a href="http://naver.com" class="card-title">오늘도 클라이밍 한 번</a>
-                    <p class="card-text"></p>
-                    <p class="card-text comment"></p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top"
-                    src="https://www.womansense.co.kr/upload/woman/article/202112/thumb/49754-474495-sampleM.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <a href="http://naver.com" class="card-title"></a>
-                    <p class="card-text"></p>
-                    <p class="card-text comment"></p>
-                </div>
-            </div>
+
+            </form>
         </div>
     </div>
 </body>
