@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세 정보</title>
+</head>
+<body>
+
+<h2>게시글 상세 정보</h2>
+
+<!-- 뒤로 가기 버튼 -->
+<a href="/main">뒤로 가기</a>
+
+<!-- 게시글 정보 -->
+<h3 th:text="${post.title}">게시글 제목</h3>
+<p>작성자: <span th:text="${post.user.name}">작성자 이름</span></p>
+<p>작성 날짜: <span th:text="${#date.format(post.createdDate, 'yyyy-MM-dd HH:mm')}">게시글 작성 날짜</span></p>
+<p>조회수: <span th:text="${post.viewCnt}">조회수: <span th:text="${post.viewCnt}" class="" contenteditable="true">게시글 조회수</span></span></p>
+<p>좋아요 수: <span th:text="${post.likeCnt}">게시글 좋아요 수</span></p>
+<p>댓글 수: <span th:text="${post.comments.size()}">게시글 댓글 수</span></p>
+
+<!-- 게시글 수정 및 삭제 버튼 (작성자인 경우에만 표시) -->
+<div th:if="${currentUserIsAuthor}">
+    <a href="/editPost">게시글 수정</a>
+    <a href="/deletePost">게시글 삭제</a>
+</div>
+
+<!-- 게시글 본문 텍스트 -->
+<div th:utext="${post.content}">게시글 본문 텍스트</div>
+
+<!-- 게시글 이미지 (여러 장일 수 있음) -->
+<div th:each="image : ${post.images}">
+    <img th:src="${image.url}" alt="게시글 이미지">
+</div>
+
+<!-- 댓글 목록 -->
+<h4>댓글 목록</h4>
+<div th:if="${comments}">
+    <div th:each="comment : ${comments}">
+        <p>댓글 작성자: <span th:text="${comment.user.nickname}">댓글 작성자</span></p>
+        <p th:utext="${comment.content}">댓글 텍스트</p>
+        <p>댓글 작성 시간: <span th:text="${comment.createdAt}">댓글 작성 시간</span></p>
+        <p>댓글 좋아요 수: <span th:text="${comment.likeCnt}">댓글 좋아요 수</span></p>
+        <!-- 댓글 수정 및 삭제 버튼 (작성자인 경우에만 표시) -->
+        <div th:if="${currentUserIsAuthor}">
+            <a href="/editComment">댓글 수정</a>
+            <a href="/deleteComment">댓글 삭제</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
